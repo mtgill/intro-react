@@ -1,15 +1,15 @@
 
-import React, { Component } from 'react';
-import ReactMap, { Layer, Feature } from 'react-mapbox-gl';
+import React from 'react';
+import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 
 const accessToken = 'pk.eyJ1IjoibXRnaWxsOTAiLCJhIjoiY2p5MHh5dm0wMDF0ZTNubzNkdDcyNXVndiJ9.C32ccynIS0v4UlaUylcoOQ';
 
-class App extends Component {
+class App extends React.Component {
   style = 'mapbox://styles/mapbox/streets-v11';
 
-  center = [-96, 37.8];
+  center = [-86.7816, 36.1627];
 
-  zoom = [4];
+  zoom = 3;
 
   mapStyle = {
     height: '75vh',
@@ -17,7 +17,7 @@ class App extends Component {
   };
 
   render() {
-    const Map = ReactMap({
+    const Map = ReactMapboxGl({
       accessToken,
     });
     return (
@@ -26,15 +26,7 @@ class App extends Component {
         style={this.style}
         containerStyle={this.mapStyle}
         center={this.center}
-        zoom={this.zoom}
-      >
-       <Layer
-      type="symbol"
-      id="marker"
-      layout={{ 'icon-image': 'marker-15' }}>
-      <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
-    </Layer>
-    </Map>
+        />
       </div>
     );
   }
